@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hashibami/Desktop/2018/pt/main.cpp
+iostream
+-
+pt.h
+/Users/hashibami/Desktop/2018/pt/pt.h
+
+/Users/hashibami/Desktop/2018/pt/pt.h
+
