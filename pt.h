@@ -8,26 +8,26 @@
 template <typename T>
 class Message {
     int senderPid;
-    int receiverPid;
+    MessageQueue receiverMessageQueue;
     T message;
 };
 
-class MessagePool {
-public:
-    virtual Message Next() = 0;
-    virtual Add() = 0;
-    void Remove(Message& targetMessage, bool removeAll){
+class MessageQueue : public 
 
-    }
+template <typename T>
+class PriorityQueue{
+public:
+    virtual T Next() = 0;
+    virtual Add() = 0;
+    virtual void Remove(Message& targetMessage, bool removeAll) = 0;
     void HasFree() {
-        return (queueSize < queueCapacity);
+        return (size < capacity);
     }
-    void isEmpty() {
-        return queueSize == 0;
+    void IsEmpty() {
+        return size == 0;
     }
-    size_t queueSize;
-    size_t queueSize;
-    multiset<Message&> Pool;
+    size_t size;
+    size_t capacity;
 };
 
 
@@ -46,31 +46,40 @@ public:
 
     virtual bool Run() = 0;
 
-    void Register(MessageQueue& queue) {
-        queue.Add(this);
+    void Register(MessageManager& manager) {
+        manager.Add(this);
     }
-    void UnRegister(MessageQueue& queue) {
-        queue.Remove(this);
+    void UnRegister(MessageManager& manager) {
+        manager.Remove(this);
     }
 
 protected:
     typedef int LineNumber;
     static const LineNumber LineNumberInvalid = (LineNumber)(-1);
     LineNumber ptLine;
-
+    int pid;
 };
 
-class Kernel {
+class Context {
 public:
-    Kernel() {}
-    virtual ProtoThread& Schedule() = 0;
+    Context() {}
+    virtual ProtoThread& Schedule(){
+
+    }
+    void Add(ProtoThread& protoThread) {
+        threadSet.insert(protoThread);
+    }
+
+    void Remove(ProtoThread& protoThread) {
+        threadSet.erase(protoThread);
+    }
 
 protected:
-    set& messageQueueSet;
-    set& threadSet;
+    MessageManager& messageManager;
+    set<protoThread&> threadSet;
 };
 
-class MessageManager {
+class MessageManager : public ProtoThread {
 public:
     MessageManager(int capacity=100) : queueCapacity(capacity), queueSize(0){}
     void Add(ProtoThread& protoThread) {
@@ -82,6 +91,18 @@ public:
             std::count << "Successfully inserted" << std::endl;
         }
     }
+
+    virtual void Run() {
+        while(true) {
+            if(currentMessage) {
+                Dispatch(currentMessage);
+                PT_YIELD("Successfully dispatch message");
+            }else {
+                PT_YIELD("No message found yet");
+            }
+        }
+    }
+
     void Remove(ProtoThread& protoThread) {
         if (registeredProtoThreads.count(protoThread)){
             regiterProtoThreads.erase(protoThread);
@@ -100,6 +121,7 @@ public:
             std::count << "The message should be discarded because of duplication" << std::endl;
         }
     }
+
     void Remove(Message& message, bool removeAll = true) {
         if(!isEmpty() && messageIdentifiers.count(message)){
             messageIdentifiers.erase(message);
@@ -110,8 +132,10 @@ public:
     }
 
 
-    virtual void Dispatch() {
-        
+    virtual void Dispatch(Message& message) {
+        message.receiverPid;
+        PriorityQueue& messagePool = topicPool.find();
+        MessagemessagePool.Next();
     }
     virtual ProtoThread& Schedule() = 0; //The schedule policy of the message queue
 
@@ -119,7 +143,8 @@ public:
 protected:
     unordered_set<ProtoThread&> registerProtoThreads;
     set<Message&> messageIdentifiers;
-    unordered_map<MessagePool> messagePool;
+    PriorityQueue<> & topicPool;
+    Message& currentMessage;
 };
 
 
