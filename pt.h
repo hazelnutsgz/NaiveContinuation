@@ -2,6 +2,15 @@
 #define __PT_H__
 
 #include <unordered_set>
+#include <set>
+
+template <class T>
+class Message {
+    int senderPid;
+    int receiverPid;
+    T message;
+};
+
 class ProtoThread {
 public:
     ProtoThread() : ptLine(0) {}
@@ -25,6 +34,17 @@ protected:
     static const LineNumber LineNumberInvalid = (LineNumber)(-1);
     LineNumber ptLine;
 
+};
+
+class Kernel {
+public:
+    Kernel() {}
+    virtual ProtoThread& Schedule() = 0;
+    
+
+protected:
+    set& messageQueueSet;
+    set& threadSet;
 };
 
 class MessageQueue {
@@ -52,12 +72,12 @@ public:
     virtual void Dispatch() {
 
     }
-    virtual ProtoThread& Schedule() = 0;
+    virtual ProtoThread& Schedule() = 0; //The schedule policy of the message queue
 
 
 protected:
-    unordered_set<ProtoThread&> receiveProtoThreads;
-    unordered_set<ProtoThread&> sendProtoThreads;
+    unordered_set<ProtoThread&> registerProtoThreads;
+
 };
 
 

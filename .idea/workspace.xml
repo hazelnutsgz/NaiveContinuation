@@ -12,11 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f664e7c-8ee4-49c9-9db3-4e5717882806" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/pt.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/pt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/pt.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -43,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -54,8 +49,11 @@
       <file leaf-file-name="pt.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pt.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+            <state relative-caret-position="343">
+              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+              <folding>
+                <element signature="e#70#79#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,12 +154,12 @@
       <updated>1530937222815</updated>
       <workItem from="1530937224186" duration="7405000" />
       <workItem from="1530972297799" duration="73000" />
-      <workItem from="1530972406543" duration="8688000" />
+      <workItem from="1530972406543" duration="9241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16166000" />
+    <option name="totallyTimeSpent" value="16719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -215,6 +213,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1944">
           <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+          <folding>
+            <element signature="e#70#79#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -252,7 +253,7 @@
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -261,8 +262,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pt.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+        <state relative-caret-position="343">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+          <folding>
+            <element signature="e#70#79#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
