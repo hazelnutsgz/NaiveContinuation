@@ -3,38 +3,32 @@
 
 class ProduceThread : public ProtoThread {
 public:
+    ProduceThread(void* args, void* ret): {}
     virtual bool Run() {
         PT_BEGIN();
-        static int a = 5;
-        while(a > 0) {
-            a -= 1;
-            PT_WAIT_UNTIL(a < 0);
-            std::cout << a << std::endl;
-        }
         PT_END();
     }
 };
-
-class ConsumeThread : public ProtoThread {
+class NewMessageQueue : public MessageQueue{
 public:
-    virtual bool Run() {
-        PT_BEGIN();
-        static int a = 5;
-        while(a > 0) {
-            a -= 1;
-            PT_WAIT_UNTIL(a < 0);
-            std::cout << a << std::endl;
-        }
-        PT_END();
+    virtual ProtoThread& Schedule() {
+
     }
+
+protected:
+    ProtoThread* s;
+
 };
 
 
 int main() {
-    ProduceThread pthread;
-    ConsumeThread cthread;
+    pair p;
+    p.left = 1;
+    p.right = 2;
+    ProduceThread pthread(add, (void*) &p, (void*) &ret);
+    pthread.Run();
 
-    while(pthread.Run() || cthread.Run());
+    std::cout << ret.sum;
 
-    std::cout << "Destroy the two threads" << std::endl;
+    std::cout << "Destroy the thread" << std::endl;
 }

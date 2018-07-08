@@ -1,6 +1,7 @@
 #ifndef __PT_H__
 #define __PT_H__
 
+#include <unordered_set>
 class ProtoThread {
 public:
     ProtoThread() : ptLine(0) {}
@@ -15,12 +16,51 @@ public:
 
     virtual bool Run() = 0;
 
+    void Register(MessageQueue& queue) {
+
+    }
+
 protected:
     typedef int LineNumber;
     static const LineNumber LineNumberInvalid = (LineNumber)(-1);
     LineNumber ptLine;
 
 };
+
+class MessageQueue {
+public:
+    MessageQueue() {}
+    void Add(ProtoThread& protoThread) {
+        if (registeredProtoThreads.count(protoThread)){
+            std::count << "The thread has been registered before" << std::endl;
+            return;
+        }else {
+            registeredProtoThreads.insert(protoThread);
+            std::count << "Successfully inserted" << std::endl;
+        }
+    }
+    void Remove(ProtoThread& protoThread) {
+        if (registeredProtoThreads.count(protoThread)){
+            regiterProtoThreads.erase(protoThread);
+            std::count << "The thread has been registered before" << std::endl;
+            return;
+        }else {
+            std::count << "The thread do not exist" << std::endl;
+        }
+    }
+
+    virtual void Dispatch() {
+
+    }
+    virtual ProtoThread& Schedule() = 0;
+
+
+protected:
+    unordered_set<ProtoThread&> receiveProtoThreads;
+    unordered_set<ProtoThread&> sendProtoThreads;
+};
+
+
 
 #define PT_BEGIN() bool ptYielded = true; (void) ptYielded; switch (ptLine) { case 0:
 
@@ -49,20 +89,12 @@ protected:
 #define PT_EXIT() do { Stop(); return false; } while (0)
 
 // Yield protothread till next call to its Run().
-#define PT_YIELD() \
+#define PT_YIELD(returnValue) \
     ptYielded = false; \
     ptLine = __LINE__; \
     case __LINE__: {\
         if (!ptYielded) \
-            return true; \
+            return returnValue; \
         }
 
-// Yield protothread until given condition is true.
-#define PT_YIELD_UNTIL(condition) \
-    ptYielded = false; \
-    ptLine = __LINE__; \
-    case __LINE__: {\
-        if (!ptYielded || !(condition)) \
-            return true; \
-        }
 #endif
